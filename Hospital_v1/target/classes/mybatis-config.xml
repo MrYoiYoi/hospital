@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="scit.team.hospital.vo.BoardVO"  alias="Board" />
+		<typeAlias type="scit.team.hospital.vo.Member"  alias="Member" />
+		<typeAlias type="scit.team.hospital.vo.ReplyVO" alias="ReplyVO" />
+		<typeAlias type="scit.team.hospital.vo.Reservation" alias="Reservation" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappers/boardMapper.xml" />
+		<mapper resource="mappers/replyMapper.xml" />
+		<mapper resource="mappers/memberMapper.xml" />
+		<mapper resource="mappers/reservationMapper.xml" />
+	</mappers>
+</configuration>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="scit.team.hospital.dao.ReservationMapper">
+<!-- 예약 저장 -->
+<insert id="insertReservation" parameterType="Reservation">
+INSERT INTO reservation
+(
+	reservation_num
+	, username
+	, reservation_date
+	, reservation_time
+	, userid
+	
+)
+VALUES
+(
+	reservation_seq.nextval
+	, #{username}
+	, #{reservation_date}
+	, #{reservation_time}
+	, #{userid}
+)
+</insert>
+
+<!-- 예약 날짜 비었는지 확인 -->
+<select id="timeCheck" resultType="int" parameterType="Reservation">
+  	
+SELECT 
+	count(*) 
+FROM 
+	reservation
+WHERE 
+	reservation_time = #{reservation_time}
+AND
+	reservation_date = #{reservation_date}
+  	
+</select>
+
+<!--내 예약 내역 조회 -->
+<select id="selectReservation" resultType="Reservation" parameterType="String">
+
+SELECT
+     r.reservation_num as reservation_num
+     , r.userid as userid
+     , r.username as username
+     , to_char(r.reservation_date, 'YYYY-MM-DD') as reservation_date
+     , r.treatment_kind as treatment_kind
+     , r.reservation_time as reservation_time
+     , m.birth as birth
+     , m.phone as phone
+     , m.gender as gender
+ FROM Reservation r, members m
+  where
+  m.userid = r.userid
+  and
+    reservation_date >= sysdate
+  and
+  r.userid = #{userid}
+ ORDER BY reservation_num DESC
+</select>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
