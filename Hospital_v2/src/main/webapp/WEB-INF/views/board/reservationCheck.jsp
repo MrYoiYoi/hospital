@@ -12,6 +12,26 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="resources/Style.css?ver=1" rel="stylesheet">
+    
+<style>
+
+div.reservation {
+	text-align : center;
+}
+div.row2{
+	display:flex;
+}
+div.col-md-4-1{
+	 flex:1;
+	 margin-left : 270px;
+}
+div.col-md-4-2{
+	 flex:1;
+	 margin-right : 270px;
+}
+
+
+</style>
 	
 </head>
 <body>
@@ -30,7 +50,7 @@
 				</c:if>
             </div>
             <div id="box_logo">
-                <img id="logo" src="resources/img/logo.png">
+                  <a href="${pageContext.request.contextPath}/"><img id="logo" src="resources/img/logo.png"></a>
             </div>
             
         </div>
@@ -67,7 +87,7 @@
                     <a class="nav-link" href="#">찾아오시는 길</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">공지사항</a>
+                    <a class="nav-link" href="listboard2">공지사항</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="listboard">Q&A</a>
@@ -80,8 +100,8 @@
           <div class="reservation">
 
             <!-- Three columns of text below the carousel -->
-            <div class="row">
-              <div class="col-md-4">
+            <div class="row2">
+              <div class="col-md-4-1">
                
                 <div class="bd-placeholder-img rounded-circle round_icon btn-secondary" id="box_icon_1" role="button" onclick="location.href='reservation';">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-building bd-placeholder-img icon" viewBox="0 0 16 16">
@@ -92,7 +112,7 @@
                 
                 <p>예약하기</p>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4-2">
               
                 <div class="bd-placeholder-img rounded-circle round_icon btn-secondary" id="box_icon_2" role="button" onclick="location.href='listReservation';">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-people bd-placeholder-img icon" viewBox="0 0 16 16">

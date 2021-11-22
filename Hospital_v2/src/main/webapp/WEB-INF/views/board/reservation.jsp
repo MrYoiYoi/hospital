@@ -16,6 +16,17 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	
+<style>
+div.container{
+	text-align:center;
+}
+#reservationTable{
+	text-align:left;
+	margin:auto;
+}
+
+</style>
+	
 	
 </head>
 <body>
@@ -34,7 +45,7 @@
 				</c:if>
             </div>
             <div id="box_logo">
-                <img id="logo" src="resources/img/logo.png">
+                  <a href="${pageContext.request.contextPath}/"><img id="logo" src="resources/img/logo.png"></a>
             </div>
             
         </div>
@@ -71,7 +82,7 @@
                     <a class="nav-link" href="#">찾아오시는 길</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">공지사항</a>
+                    <a class="nav-link" href="listboard2">공지사항</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="listboard">Q&A</a>
@@ -85,7 +96,7 @@
 				<h2>[ 병원 예약 ]</h2>
 				<form action="reservation" method="POST">
 					<input type="hidden" name="userid" value="${sessionScope.loginId}">
-					<table>
+					<table id = reservationTable>
 						<tr>
 							<td>이름</td>
 							<td>
@@ -104,11 +115,12 @@
 								<input type="text" id="time1" name="reservation_time" class="form-control" style="width:200px;">
 								<span id="time_input_re"></span>
 							</td>
-						</tr>				
+						</tr>			
 						
-					</table>
+					</table>						
 					<!-- <input type="submit" class="btn btn-info" value="예약하기" onclick="return nameCheck();"> -->
 					<input type="submit" class="btn btn-info" value="예약하기">
+					<br><br>
 					<!-- 시간 정해놓기 (9시부터 17시까지) 점심시간은 아직 안됨 -->		
 				<script>
 				

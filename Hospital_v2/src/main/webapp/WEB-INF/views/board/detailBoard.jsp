@@ -120,13 +120,13 @@ function boardUpdate() {
                     <a class="nav-link" href="#">진료시간</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">예약</a>
+                    <a class="nav-link" href="reservationCheck">예약</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">찾아오시는 길</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">공지사항</a>
+                    <a class="nav-link" href="listboard2">공지사항</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="listboard">Q&A</a>
