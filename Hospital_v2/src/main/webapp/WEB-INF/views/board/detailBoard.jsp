@@ -131,6 +131,11 @@ function boardUpdate() {
                   <li class="nav-item">
                     <a class="nav-link" href="listboard">Q&A</a>
                   </li>
+                   <c:if test="${sessionScope.loginId =='admin' }">
+                   <li class="nav-item">
+                    <a class="nav-link" href="#">환자예약관리</a>
+                  </li>
+                  </c:if>
                 </ul>
               </div>
             </div>
