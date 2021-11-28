@@ -159,7 +159,7 @@ public class BoardController {
 		model.addAttribute("board", board);
 
 		return "board/detailBoard";
-	}
+	}	
 
 	@RequestMapping("/deleteboard")
 	public String deleteboard(int boardnum, HttpSession session) {

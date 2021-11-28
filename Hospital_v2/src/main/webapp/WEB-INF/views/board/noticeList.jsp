@@ -163,17 +163,15 @@ function detailBoard(num) {
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">의료진 소개</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                      <li><a class="dropdown-item" href="#">김태은</a></li>
                       <li><a class="dropdown-item" href="#">양철욱</a></li>
-                      <li><a class="dropdown-item" href="#">옥동호</a></li>
-                      <li><a class="dropdown-item" href="#">장혁진</a></li>
-                      <li><a class="dropdown-item" href="#">정인호</a></li>
+                      <li><a class="dropdown-item" href="#">옥동호</a></li>                      
+                      <li><a class="dropdown-item" href="#">이윤경</a></li>
+                      <li><a class="dropdown-item" href="#">이찬영</a></li>   
                     </ul>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">진료시간</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="reservationCheck">예약</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">찾아오시는 길</a>
@@ -184,6 +182,11 @@ function detailBoard(num) {
                   <li class="nav-item">
                     <a class="nav-link" href="listboard">Q&A</a>
                   </li>
+                   <c:if test="${sessionScope.loginId =='admin' }">
+                   <li class="nav-item">
+                    <a class="nav-link" href="#">환자예약관리</a>
+                  </li>
+                  </c:if>
                 </ul>
               </div>
             </div>
@@ -222,7 +225,7 @@ function detailBoard(num) {
 					<td>${board.boardnum} <%-- / ${stat.count } --%></td>
 					<td class="title">
 						<c:if test= "${board.originalfile != null }">
-							<img src="resources/images/clip.png" style= "width:15px">
+							<img src="resources/img/clip.png" style= "width:15px">
 						</c:if>
 							<a href="javascript:detailBoard(${board.boardnum});">${board.title}</a>
 						<c:if test="${board.replycount != 0}" >
