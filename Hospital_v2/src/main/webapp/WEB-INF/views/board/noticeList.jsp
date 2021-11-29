@@ -138,6 +138,8 @@ function detailBoard(num) {
                	<c:if test="${sessionScope.loginId!=null}">
 						<span id="account_text">${sessionScope.loginName}님 환영합니다</span>
 						<a href="logout">로그아웃</a>
+						<a href="<c:out value='${contextPath}' />update">회원정보수정</a>
+						<a href="<c:out value='${contextPath}' />deletemember" onclick="return confirm('정말 탈퇴하시겠습니까?');">회원탈퇴</a>
 				</c:if>
             </div>
             <div id="box_logo">

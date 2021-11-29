@@ -26,6 +26,8 @@
                	<c:if test="${sessionScope.loginId!=null}">
 						<span id="account_text">${sessionScope.loginName}님 환영합니다</span>
 						<a href="logout">로그아웃</a>
+						<a href="<c:out value='${contextPath}' />update">회원정보수정</a>
+						<a href="<c:out value='${contextPath}' />deletemember" onclick="return confirm('정말 탈퇴하시겠습니까?');">회원탈퇴</a>
 				</c:if>
             </div>
             <div id="box_logo">
@@ -92,7 +94,7 @@
                   <div class="carousel-caption text-start">
                     <h2>협진시스템과</h2><h1>최상의 의료서비스</h1>
                     <p>각과 전문분야의 의료진에게<br>편안하고 만족스로운 진료를 받으실 수 있습니다.</p>
-                    <p><a class="btn btn-lg btn-primary" href="reservationCheck">지금 예약하기</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#">지금 예약하기</a></p>
                   </div>
                 </div>
               </div>
@@ -102,7 +104,7 @@
                   <div class="carousel-caption text-start">
                     <h2>다양한 경험의</h2><h1>가치를 더해줄 의료장비</h1>
                     <p>앞선 기술과 최첨단 의료장비로<br>KITA의원은 결과로 보여드리겠습니다.</p>
-                    <p><a class="btn btn-lg btn-primary" href="reservationCheck">지금 예약하기</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#">지금 예약하기</a></p>
                   </div>
                 </div>
               </div>
@@ -112,7 +114,7 @@
                   <div class="carousel-caption text-start">
                     <h2>국민건강보험공단</h2><h1><b>건강검진 지정기관</b></h1>
                     <p>국민건강보험공단 건강검진은<br>거주 지역과 상관없이 받으실 수 있습니다.</p>
-                    <p><a class="btn btn-lg btn-primary" href="reservationCheck">지금 예약하기</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#">지금 예약하기</a></p>
                   </div>
                 </div>
               </div>
