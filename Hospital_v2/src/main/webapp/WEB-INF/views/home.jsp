@@ -62,6 +62,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">진료시간</a>
                   </li>
+                   <li class="nav-item">
+                    <a class="nav-link" href="reservationCheck">진료예약</a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">찾아오시는 길</a>
                   </li>
@@ -73,7 +76,7 @@
                   </li>
                   <c:if test="${sessionScope.loginId =='admin' }">
                    <li class="nav-item">
-                    <a class="nav-link" href="#">환자예약관리</a>
+                    <a class="nav-link" href="listAllReservations">환자예약관리</a>
                   </li>
                   </c:if>
                 </ul>

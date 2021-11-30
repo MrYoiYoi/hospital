@@ -24,16 +24,32 @@
 	<context:component-scan base-package="scit.team.hospital" />
 	
 		<!-- LoginInterceptor클래스를 bean으로 등록 -->
-	<beans:bean id="loginInterceptor" class="scit.team.hospital.intercepter.LoginInterceptor" />
-	
+	<beans:bean id="loginInterceptor" class="scit.team.hospital.intercepter.LoginInterceptor" />		
 	
 	<interceptors>
 		<interceptor>
 			
 			<mapping path="/reservation" />
-			
-			
+			<mapping path="/listReservation" />		
+			<mapping path="/writeboard" />	
+			<mapping path="/writeboard2" />	
+			<mapping path="/deleteboard" />	
+			<mapping path="/updateboard" />	
+			<mapping path="/download" />				
+				
 			<beans:ref bean="loginInterceptor"/>
+		
+			
+		</interceptor>
+	</interceptors>
+	
+	<beans:bean id="ManagerloginInterceptor" class="scit.team.hospital.intercepter.ManagerLoginInterceptor" />
+	
+		<interceptors>
+		<interceptor>
+						
+			<mapping path="/listAllReservations" />
+			<beans:ref bean="ManagerloginInterceptor"/>
 			
 		</interceptor>
 	</interceptors>

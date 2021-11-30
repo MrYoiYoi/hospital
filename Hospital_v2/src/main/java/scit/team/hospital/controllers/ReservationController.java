@@ -65,6 +65,18 @@ public class ReservationController {
 		return "board/listReservation";
 	}
 	
+	@RequestMapping("/listAllReservations")
+	public String listAllReservation(Model model, HttpSession session) {
+
+		List<Reservation> list = repository.selectAllReservations();
+		System.out.println(list);
+		
+		
+		model.addAttribute("list", list);	
+		
+		return "board/listAllReservations";
+	}
+	
 	
 	
 	

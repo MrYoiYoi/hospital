@@ -18,5 +18,7 @@ public interface ReservationMapper {
 
 	public List<Reservation> selectReservation(String userid) throws Exception;
 
+	public List<Reservation> selectAllReservations();
+
 
 }

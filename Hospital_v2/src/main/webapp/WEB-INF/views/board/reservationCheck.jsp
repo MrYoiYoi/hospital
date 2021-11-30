@@ -71,17 +71,18 @@ div.col-md-4-2{
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">의료진 소개</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                      <li><a class="dropdown-item" href="#">김태은</a></li>
                       <li><a class="dropdown-item" href="#">양철욱</a></li>
-                      <li><a class="dropdown-item" href="#">옥동호</a></li>
-                      <li><a class="dropdown-item" href="#">장혁진</a></li>
-                      <li><a class="dropdown-item" href="#">정인호</a></li>
+                      <li><a class="dropdown-item" href="#">옥동호</a></li>                      
+                      <li><a class="dropdown-item" href="#">이윤경</a></li>
+                      <li><a class="dropdown-item" href="#">이찬영</a></li>   
                     </ul>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">진료시간</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="reservation">예약</a>
+                    <a class="nav-link" href="reservationCheck">진료예약</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">찾아오시는 길</a>
@@ -94,7 +95,7 @@ div.col-md-4-2{
                   </li>
                    <c:if test="${sessionScope.loginId =='admin' }">
                    <li class="nav-item">
-                    <a class="nav-link" href="#">환자예약관리</a>
+                    <a class="nav-link" href="listAllReservations">환자예약관리</a>
                   </li>
                   </c:if>
                 </ul>
@@ -105,7 +106,9 @@ div.col-md-4-2{
           <div class="reservation">
 
             <!-- Three columns of text below the carousel -->
+            <br><br>
             <div class="row2">
+            
               <div class="col-md-4-1">
                
                 <div class="bd-placeholder-img rounded-circle round_icon btn-secondary" id="box_icon_1" role="button" onclick="location.href='reservation';">
@@ -130,6 +133,7 @@ div.col-md-4-2{
        
             </div><!-- /.row -->
           </div>
+          <br><br>
          </div>
        
           <div class="box_icons">
