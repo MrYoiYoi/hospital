@@ -45,6 +45,8 @@ function boardList() {
                	<c:if test="${sessionScope.loginId!=null}">
 						<span id="account_text">${sessionScope.loginName}님 환영합니다</span>
 						<a href="logout">로그아웃</a>
+						<a href="<c:out value='${contextPath}' />update">회원정보수정</a>
+						<a href="<c:out value='${contextPath}' />deletemember" onclick="return confirm('정말 탈퇴하시겠습니까?');">회원탈퇴</a>
 				</c:if>
             </div>
             <div id="box_logo">
@@ -70,17 +72,15 @@ function boardList() {
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">의료진 소개</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                      <li><a class="dropdown-item" href="#">김태은</a></li>
                       <li><a class="dropdown-item" href="#">양철욱</a></li>
-                      <li><a class="dropdown-item" href="#">옥동호</a></li>
-                      <li><a class="dropdown-item" href="#">장혁진</a></li>
-                      <li><a class="dropdown-item" href="#">정인호</a></li>
+                      <li><a class="dropdown-item" href="#">옥동호</a></li>                      
+                      <li><a class="dropdown-item" href="#">이윤경</a></li>
+                      <li><a class="dropdown-item" href="#">이찬영</a></li>   
                     </ul>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">진료시간</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="reservationCheck">예약</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">찾아오시는 길</a>

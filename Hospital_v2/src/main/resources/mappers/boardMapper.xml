@@ -103,11 +103,7 @@ set
 	, savedfile = ''
 	</if>
 where
-	boardnum = #{boardnum}
-	<if test="originalfile != null">
-	, #{originalfile}
-	, #{savedfile}
-	</if>
+	boardnum = #{boardnum}	
 	
 </update>
 
