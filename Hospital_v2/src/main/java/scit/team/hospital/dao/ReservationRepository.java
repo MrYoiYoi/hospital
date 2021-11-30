@@ -73,6 +73,21 @@ public class ReservationRepository {
 		
 		return list;
 	}
+	
+	public List<Reservation> selectAllReservations() {
+		ReservationMapper mapper = session.getMapper(ReservationMapper.class);
+		
+		List<Reservation> list = null;
+		
+		try {
+			list = mapper.selectAllReservations();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 
 	
 }

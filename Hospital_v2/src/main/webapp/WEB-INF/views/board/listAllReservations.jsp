@@ -1,37 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
+<title>에약 조회</title>
+ <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>KITA의원</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link href="resources/Style.css?ver=1" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <link href="resources/Style.css?ver=2" rel="stylesheet">	
+    
+    <style>
+/* 	body {
+		font-family : sans-serif;
+		font-size : 0.9em;
+	} */	
+	div.outline{
+		padding-left : 80px;
+		padding-right: 80px;
+	}
 	
-<style>
-div.container{
-	text-align:center;
-}
-#reservationTable{
-	text-align:left;
-	margin:auto;
-}
-
+	div.wrapper1{
+		width : 900px;
+		margin :0 auto;
+		text-align : center;
+	}
+	table{
+		width : 900px;
+		border-collapse : collapse;
+		clear : both;
+	}
+	
+	th {
+	/* background : #efefef; */
+	border-collapse : collapse;
+	border-bottom: 1px solid #444444;
+   	padding: 10px;
+	}
+	
+	td{
+		border-bottom: 1px solid #dcdfdf;
+    	padding: 5px;
+	}
+	.write {
+		text-align : right;
+	}
+	.home {
+		text-align : left;
+	}
+	a {
+		display : inline-block;
+	}
+	div.home p {
+		width : 500px;
+		float : left;
+		margin : 0px;
+	}
+	form { 
+		float : right:
+	}
+	
 </style>
-	
-	
+    
+
 </head>
 <body>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
     <div class="wrapper">
         <div class="box" id="box_head">
@@ -42,10 +79,13 @@ div.container{
                	<c:if test="${sessionScope.loginId!=null}">
 						<span id="account_text">${sessionScope.loginName}님 환영합니다</span>
 						<a href="logout">로그아웃</a>
+						<a href="<c:out value='${contextPath}' />update">회원정보수정</a>
+						<a href="<c:out value='${contextPath}' />deletemember" onclick="return confirm('정말 탈퇴하시겠습니까?');">회원탈퇴</a>
 				</c:if>
             </div>
             <div id="box_logo">
-                  <a href="${pageContext.request.contextPath}/"><img id="logo" src="resources/img/logo.png"></a>
+               <a href="${pageContext.request.contextPath}/"><img id="logo" src="resources/img/logo.png"></a>
+                <!-- <img id="logo" src="resources/img/logo.png"> -->
             </div>
             
         </div>
@@ -76,13 +116,13 @@ div.container{
                   <li class="nav-item">
                     <a class="nav-link" href="#">진료시간</a>
                   </li>
-                  <li class="nav-item">
+                   <li class="nav-item">
                     <a class="nav-link" href="reservationCheck">진료예약</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">찾아오시는 길</a>
                   </li>
-                  <li class="nav-item">
+                    <li class="nav-item">
                     <a class="nav-link" href="listboard2">공지사항</a>
                   </li>
                   <li class="nav-item">
@@ -97,166 +137,46 @@ div.container{
               </div>
             </div>
           </nav>
-			<div class="container">
-						<br>
-				<h2>[ 병원 예약 ]</h2>
-				<form action="reservation" method="POST">
-					<input type="hidden" name="userid" value="${sessionScope.loginId}">
-					<table id = reservationTable>
-						<tr>
-							<td>이름</td>
-							<td>
-								<input type="text" id="username" name="username" value="${sessionScope.loginName}">
-							</td>
-						</tr>
-						<tr>
-							<td>날짜</td>
-							<td>
-								<input type="date" name="reservation_date"id="datefield" min="2021-07-20" max="2025-10-10" required>
-							</td>
-						</tr>
-						<tr>
-							<td>시간</td>
-							<td>
-								<input type="text" id="time1" name="reservation_time" class="form-control" style="width:200px;">
-								<span id="time_input_re"></span>
-							</td>
-						</tr>			
-						
-					</table>		
-					<br>				
-					<!-- <input type="submit" class="btn btn-info" value="예약하기" onclick="return nameCheck();"> -->
-					<input type="submit" class="btn btn-info" value="예약하기">
-					<br><br>
-					<!-- 시간 정해놓기 (9시부터 17시까지) 점심시간은 아직 안됨 -->		
-				<script>
-				
-					
-				$(function() {
-					
-			    $("#time1").timepicker({
-			        timeFormat: 'h:mm p',
-			        interval: 60,
-			        minTime: '9',
-			        maxTime: '17',
-			        defaultTime: '11',
-			        startTime: '9',
-			        dynamic: false,
-			        dropdown: true,
-			        scrollbar: true,
-			        change: time1
-			    });
-			  	  	function time1 () {
-						
-						//alert('gg');
-				
-			  	  	var time = $('#time1').val(); //time값이 "time1"인 입력란의 값을 저장
-			  	  	var date = $('#datefield').val();
-			  		var allData = {reservation_time : time, reservation_date : date}
-			  	    $.ajax({
-			  	        url:'timeCheck', //Controller에서 인식할 주소
-			  	        type:'post', 
-			  	        data: allData,
-			  	     	dataType : "json",
-			  	     	//cache: false,
-			  	    	async : false,
-			  	        success: function(data) {
-			  	        	//alert(data);
-			  	        	//console.log("성공 여부" + result);
-			  	        	
-			  	        	
-			  	        		if(data != 1){
-			  						$('#time_input_re').css("color", "blue");
-			  						$("#time_input_re").text("예약 가능합니다");
-			  						
-			  					} else {
-			  						$("#time_input_re").css("color", "red");
-			  						$("#time_input_re").text("예약이 불가능합니다.");	
-			  						
-			  					}
-			  	        	
-			  	       		}
-				  		
-			
-			
-			  	   		 });
-						
-						
-					};
-			   });
-					
-					
-				</script>
-					
-				</form>
-				<!-- 날짜 오늘부터 7일후까지-->			
-				<script>
-				var today = new Date();
-				var today2 = new Date();
-				var dd = today.getDate();
-				var dd2 = 0;
-				var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
-				var yyyy = today.getFullYear();
-				if(dd<10){
-				  dd='0'+dd
-				} 
-				if(mm<10){
-				  mm='0'+mm
-				}
-				
-				today = yyyy+'-'+mm+'-'+dd;
-				document.getElementById("datefield").setAttribute("min", today);
-				dd2 = Number(dd);
-				today2= yyyy+'-'+mm+'-'+(dd2+7);
-				document.getElementById("datefield").setAttribute("max", today2);
-				</script>
-				
-					
-			
-			</div>
-       
-          <div class="box_icons">
-         
-        <div class="box" id="box_exp1">
-          <div class="cell" id="cell_1">
-            <div id="cell_1_1">Q&A</div>
-            <div id="cell_1_2">궁금하신것이 있으시다면<br>
-            Q&A에서 확인해보세요!</div>
-            <p><a class="btn btn-secondary" href="#">지금 확인해보기</a></p>
-          </div>
-          <div class="cell" id="cell_2">
-            <div id="cell_2_1">진료안내</div>
-            <div id="cell_2_2">
-              <table>
-                <tr>
-                  <td>평일</td>
-                  <td>10:00 ~ 19:00</td>
-                </tr>
-                <tr>
-                  <td>화,목(야간진료)</td>
-                  <td>10:00 ~ 20:30</td>
-                </tr>
-                <tr>
-                  <td>점심시간</td>
-                  <td>12:30 ~ 14:00</td>
-                </tr>
-                <tr>
-                  <td>토요일</td>
-                  <td>09:30 ~ 14:00</td>
-                </tr>
-                <tr>
-                  <td>일요일/공휴일</td>
-                  <td>휴진</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="cell" id="cell_3"></div>
-          <div class="cell" id="cell_4">
-            <div style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:500px;height:300px;"><div id="mymap-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=kita&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="googlemaps-html" rel="nofollow" href="https://www.embed-map.com" id="injectmap-data">https://www.embed-map.com</a><style>#mymap-display img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
-          </div>
-        </div>
-        <div class="box" id="box_exp2">
+	</div>
+
+
+<div class="outline">
+<div class="wrapper1">
+	<h3 align = center>예약 내역</h3>
+	<br>
+	<!-- 게시글 목록 시작 -->
+	<table>
+		<tr>
+			<th>예약번호</th>
+			<th>이름</th>			
+			<th>예약날짜</th>			
+			<th>진료종류</th>			
+			<th>예약시간</th>
+			<th>생년월일</th>		
+			<th>성별</th>		
+			<th>핸드폰번호</th>					
+		</tr>
+		
+		<!-- 게시글 출력 -->
+		<c:forEach var="board" items="${list}" varStatus="stat">		
+			<tr>
+				<td>${board.reservation_num} </td>
+				<td>
+					${board.username}
+				</td>
+				<td>${board.reservation_date}</td>
+				<td>${board.treatment_kind}</td>
+				<td>${board.reservation_time}</td>
+				<td>${board.birth}</td>
+				<td>${board.gender}</td>
+				<td>${board.phone}</td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <div class="box" id="box_exp2">
           <div id="box_exp2_wrapper">
             <div id="box_exp2_1">
               <img src="resources/img/logoW.png">
@@ -277,7 +197,8 @@ div.container{
           </div>
           <div id="box_exp2_3"></div>
         </div>
-        <div class="box" id="box_foot">Copyright 2021 KITA의원. All Rightfes Reserved. Design by SCIT 41</div>
+	
+	 <div class="box" id="box_foot">Copyright 2021 KITA의원. All Rightfes Reserved. Design by SCIT 41</div>
         <div class="position-fixed" id="box_side">
           <div class="cell" id="box_side_1" onclick="location.href='https://www.facebook.com/KITA.fb';">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-facebook" viewBox="0 0 16 16">
@@ -314,6 +235,7 @@ div.container{
             <p class="user-select-none">02-<br>1566-<br>5114</p>
           </div>
         </div>
-    </div>
+
 </body>
 </html>
+
