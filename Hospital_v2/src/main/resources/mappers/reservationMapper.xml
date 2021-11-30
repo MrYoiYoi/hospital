@@ -49,7 +49,7 @@ SELECT
      , to_char(r.reservation_date, 'YYYY-MM-DD') as reservation_date
      , r.treatment_kind as treatment_kind
      , r.reservation_time as reservation_time
-     , m.birth as birth
+     , to_char(m.birth, 'YYYY-MM-DD') as birth
      , m.phone as phone
      , m.gender as gender
  FROM Reservation r, members m
@@ -64,18 +64,19 @@ SELECT
 
 <!--전체 예약 내역 조회(관리자용) -->
 <select id="selectAllReservations" resultType="Reservation">
-
-SELECT distinct
+SELECT
      r.reservation_num as reservation_num
      , r.userid as userid
      , r.username as username
      , to_char(r.reservation_date, 'YYYY-MM-DD') as reservation_date
      , r.treatment_kind as treatment_kind
      , r.reservation_time as reservation_time
-     , m.birth as birth
+     , to_char(m.birth, 'YYYY-MM-DD') as birth
      , m.phone as phone
      , m.gender as gender
- FROM Reservation r, members m
+ FROM Reservation r
+ inner join members m
+ on r.userid = m.userid
  where
     reservation_date >= sysdate
  ORDER BY reservation_num DESC
